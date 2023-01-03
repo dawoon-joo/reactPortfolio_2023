@@ -1,0 +1,20 @@
+$tablet: 1179px;
+$mobile: 539px;
+
+//common
+@import './common/header';
+@import './common/footer';
+@import './common/layout';
+@import './common/reset';
+
+//main
+@import './main/content';
+@import './main/visual';
+
+//sub
+@import './sub/community';
+@import './sub/department';
+@import './sub/gallery';
+@import './sub/location';
+@import './sub/members';
+@import './sub/youtube';

@@ -1,17 +1,18 @@
-import { useEffect, useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import Anime from '../../asset/anime';
 
-function Btns() {
+function Btns({ setScrolled, setPos }) {
 	const pos = useRef([]);
 	const num = useRef(4);
-	const btnRef = useRef(null);
 	const speed = useRef(500);
+	const btnRef = useRef(null);
 
+	//세로 위치값 갱신 함수
 	const getPos = () => {
 		pos.current = [];
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
 		for (const sec of secs) pos.current.push(sec.offsetTop);
-		console.log(pos.current);
+		setPos(pos.current);
 	};
 
 	//버튼, 박스 활성화 함수
@@ -20,6 +21,7 @@ function Btns() {
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
 		const scroll = window.scrollY;
 		const base = -window.innerHeight / 3;
+		setScrolled(scroll);
 
 		pos.current.forEach((pos, idx) => {
 			if (scroll >= pos + base) {
@@ -32,11 +34,8 @@ function Btns() {
 	};
 
 	useEffect(() => {
-		new Anime(window, {
-			prop: 'scroll',
-			value: pos.current[0],
-			duration: 0,
-		});
+		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
 		getPos();
 		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);
@@ -46,12 +45,12 @@ function Btns() {
 			window.removeEventListener('scroll', activation);
 		};
 	}, []);
+
 	return (
 		<ul className='scroll_navi' ref={btnRef}>
 			{Array(num.current)
 				.fill()
 				.map((_, idx) => {
-					// 현재 반복도는 순번이 0번째이면 해당 li에만 on클래스를 추가
 					let isOn = '';
 					idx === 0 && (isOn = 'on');
 					return (

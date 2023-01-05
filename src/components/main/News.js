@@ -1,9 +1,8 @@
-import React from 'react';
-
-function News() {
+function News({ Scrolled, currentPos }) {
+	const scroll = Scrolled - currentPos;
 	return (
 		<section id='news' className='myScroll'>
-			<h1>Vids</h1>
+			<h1>news</h1>
 		</section>
 	);
 }

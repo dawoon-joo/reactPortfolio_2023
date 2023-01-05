@@ -1,8 +1,11 @@
 import { useEffect, useRef } from 'react';
+import Anime from '../../asset/anime';
 
 function Btns() {
 	const pos = useRef([]);
+	const num = useRef(4);
 	const btnRef = useRef(null);
+	const speed = useRef(500);
 
 	const getPos = () => {
 		pos.current = [];
@@ -29,6 +32,11 @@ function Btns() {
 	};
 
 	useEffect(() => {
+		new Anime(window, {
+			prop: 'scroll',
+			value: pos.current[0],
+			duration: 0,
+		});
 		getPos();
 		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);
@@ -40,10 +48,26 @@ function Btns() {
 	}, []);
 	return (
 		<ul className='scroll_navi' ref={btnRef}>
-			<li className='on'></li>
-			<li></li>
-			<li></li>
-			<li></li>
+			{Array(num.current)
+				.fill()
+				.map((_, idx) => {
+					// 현재 반복도는 순번이 0번째이면 해당 li에만 on클래스를 추가
+					let isOn = '';
+					idx === 0 && (isOn = 'on');
+					return (
+						<li
+							key={idx}
+							className={isOn}
+							onClick={() => {
+								new Anime(window, {
+									prop: 'scroll',
+									value: pos.current[idx],
+									duration: speed.current,
+								});
+							}}
+						></li>
+					);
+				})}
 		</ul>
 	);
 }

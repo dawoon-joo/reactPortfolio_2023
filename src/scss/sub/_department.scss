@@ -1,0 +1,72 @@
+.Department {
+	> .inner {
+		&::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+		article {
+			width: 33.333%;
+			float: left;
+			padding: 10px;
+			margin-bottom: 50px;
+
+			.inner {
+				width: 100%;
+
+				.pic {
+					width: 100%;
+					height: 300px;
+					background: #111;
+					margin-bottom: 20px;
+					filter: saturate(0.2);
+					cursor: pointer;
+					transition: 0.5s;
+
+					&:hover {
+						filter: saturate(1.1);
+					}
+
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.Department {
+		> .inner {
+			article {
+				width: 50%;
+
+				.inner {
+					.pic {
+						height: 30vw;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.Department {
+		> .inner {
+			article {
+				width: 100%;
+
+				.inner {
+					.pic {
+						height: 50vw;
+					}
+				}
+			}
+		}
+	}
+}

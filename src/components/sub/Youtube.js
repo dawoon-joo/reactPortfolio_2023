@@ -5,6 +5,7 @@ import Modal from '../common/Modal';
 
 function Youtube() {
 	const [Vids, setVids] = useState([]);
+	const [Open, setOpen] = useState(false);
 	useEffect(() => {
 		const key = 'AIzaSyAkj4gHYVRHLVLiPqRy3wSveyrq6ff1SeU';
 		const playlist = 'PLWKqsm200CTkG61cNeBTKl0Yc9ifFJYyc';
@@ -31,14 +32,19 @@ function Youtube() {
 								<span>{date.split('T')[0]}</span>
 							</div>
 
-							<div className='pic'>
+							<div
+								className='pic'
+								onClick={() => {
+									setOpen(true);
+								}}
+							>
 								<img src={data.snippet.thumbnails.high.url} alt={data.snippet.title} />
 							</div>
 						</article>
 					);
 				})}
 			</Layout>
-			<Modal></Modal>
+			{Open && <Modal></Modal>}
 		</>
 	);
 }

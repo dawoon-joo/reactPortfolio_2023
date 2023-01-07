@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 function Location() {
 	const [Traffic, setTraffic] = useState(false);
-	const [Location, setLocation] = useState(null);
+	const mapInstance = useRef(null);
 	const container = useRef(null);
 	const { kakao } = window;
 	const options = {
@@ -24,13 +24,14 @@ function Location() {
 	});
 
 	useEffect(() => {
-		const map_instance = new kakao.maps.Map(container.current, options);
-		marker.setMap(map_instance);
-		setLocation(map_instance);
+		mapInstance.current = new kakao.maps.Map(container.current, options);
+		marker.setMap(mapInstance.current);
 	}, []);
 
 	useEffect(() => {
-		Traffic ? Location?.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC) : Location?.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+		Traffic
+			? mapInstance.current?.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
+			: mapInstance.current?.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
 	}, [Traffic]);
 
 	return (

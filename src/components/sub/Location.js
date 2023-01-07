@@ -2,10 +2,33 @@ import Layout from '../common/Layout';
 import { useEffect, useRef, useState } from 'react';
 
 function Location() {
+	const { kakao } = window;
+	const info = [
+		{
+			title: '넥슨 본사',
+			latlng: new kakao.maps.LatLng(37.40211707077346, 127.10344953763003),
+			imgUrl: `${process.env.PUBLIC_URL}/img/marker1.png`,
+			imgSize: new kakao.maps.Size(232, 99),
+			imgPos: { offset: new kakao.maps.Point(116, 99) },
+		},
+		{
+			title: '올림픽 공원',
+			latlng: new kakao.maps.LatLng(37.5206868, 127.1214941),
+			imgUrl: `${process.env.PUBLIC_URL}/img/marker2.png`,
+			imgSize: new kakao.maps.Size(232, 99),
+			imgPos: { offset: new kakao.maps.Point(116, 99) },
+		},
+		{
+			title: '서울 시청',
+			latlng: new kakao.maps.LatLng(37.5662952, 126.9779451),
+			imgUrl: `${process.env.PUBLIC_URL}/img/marker3.png`,
+			imgSize: new kakao.maps.Size(232, 99),
+			imgPos: { offset: new kakao.maps.Point(116, 99) },
+		},
+	];
 	const [Traffic, setTraffic] = useState(false);
 	const mapInstance = useRef(null);
 	const container = useRef(null);
-	const { kakao } = window;
 	const options = {
 		center: new kakao.maps.LatLng(33.450701, 126.570667),
 		level: 3,

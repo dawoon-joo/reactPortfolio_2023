@@ -56,3 +56,56 @@
 		}
 	}
 }
+
+@media screen and (max-width: $tablet) {
+	.Members {
+		> .inner {
+			table {
+				td {
+					input[type='text'],
+					input[type='password'],
+					select,
+					textarea {
+						width: 80%;
+					}
+					.err {
+						display: block;
+						margin-top: 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.Members {
+		> .inner {
+			table {
+				th {
+					display: none;
+					padding: 15px 0px;
+					&:last-child {
+						display: block;
+						width: 100%;
+					}
+					input[type='reset'],
+					input[type='submit'] {
+						width: 48% !important;
+						margin: 0 !important;
+					}
+				}
+				td {
+					border-left: none;
+					padding: 15px 0;
+					input[type='text'],
+					input[type='password'],
+					select,
+					textarea {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}

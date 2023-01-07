@@ -1,7 +1,9 @@
 import Layout from '../common/Layout';
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Members() {
+	const history = useHistory();
 	const initVal = {
 		userid: '',
 		email: '',
@@ -11,6 +13,7 @@ function Members() {
 	};
 	const [Val, setVal] = useState(initVal);
 	const [Err, setErr] = useState({});
+	const [Submit, setSubmit] = useState(false);
 
 	const check = (value) => {
 		const errs = {};
@@ -43,11 +46,16 @@ function Members() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setErr(check(Val));
+		setSubmit(true);
 	};
 
 	useEffect(() => {
-		console.log(Err);
-	}, [Err]);
+		const len = Object.keys(Err).length;
+		if (len === 0 && Submit) {
+			alert('회원가입이 완료되었습니다.');
+			history.push('/');
+		}
+	}, [Err, Submit, history]);
 
 	return (
 		<Layout name={'Members'}>

@@ -1,9 +1,16 @@
 import Layout from '../common/Layout';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
 function Location() {
 	const { kakao } = window;
-	const info = [
+	const [Traffic, setTraffic] = useState(false);
+	const [Index, setIndex] = useState(0);
+	const mapInstance = useRef(null);
+	const container = useRef(null);
+	const options = useRef(null);
+	const info = useRef(null);
+
+	info.current = [
 		{
 			title: '넥슨 본사',
 			latlng: new kakao.maps.LatLng(37.40211707077346, 127.10344953763003),
@@ -26,53 +33,55 @@ function Location() {
 			imgPos: { offset: new kakao.maps.Point(116, 99) },
 		},
 	];
-	const [Traffic, setTraffic] = useState(false);
-	const [Index, setIndex] = useState(0);
-	const mapInstance = useRef(null);
-	const container = useRef(null);
-	const options = {
-		center: info[Index].latlng,
+
+	options.current = {
+		center: info.current[Index].latlng,
 		level: 3,
 	};
 
 	//marker
-	const imageSrc = info[Index].imgUrl;
-	const imageSize = info[Index].imgSize;
-	const imageOption = info[Index].imgPos;
+	const imageSrc = info.current[Index].imgUrl;
+	const imageSize = info.current[Index].imgSize;
+	const imageOption = info.current[Index].imgPos;
 
-	const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+	const markerImage = useMemo(() => new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption), [imageSrc, imageOption, imageSize, kakao]);
 
-	const marker = new kakao.maps.Marker({
-		position: info[Index].latlng,
-		image: markerImage,
-	});
+	const marker = useMemo(() => {
+		return new kakao.maps.Marker({
+			position: info.current[Index].latlng,
+			image: markerImage,
+		});
+	}, [kakao, info, Index, markerImage]);
 
 	//type,zoomControl
-	const mapTypeControl = new kakao.maps.MapTypeControl();
-	const zoomControl = new kakao.maps.ZoomControl();
+	const mapTypeControl = useMemo(() => new kakao.maps.MapTypeControl(), [kakao]);
+	const zoomControl = useMemo(() => new kakao.maps.ZoomControl(), [kakao]);
 
 	useEffect(() => {
 		container.current.innerHTML = '';
-		mapInstance.current = new kakao.maps.Map(container.current, options);
+		mapInstance.current = new kakao.maps.Map(container.current, options.current);
 		marker.setMap(mapInstance.current);
 		mapInstance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 		mapInstance.current.addControl(zoomControl, kakao.maps.ControlPosition.LEFT);
 
+		//zoom : true, false
+		mapInstance.current.setZoomable(true);
+
 		//resize center
 		const setCenter = () => {
-			mapInstance.current.setCenter(info[Index].latlng);
+			mapInstance.current.setCenter(info.current[Index].latlng);
 		};
 		window.addEventListener('resize', setCenter);
 		return () => {
 			window.removeEventListener('resize', setCenter);
 		};
-	}, [Index]);
+	}, [Index, kakao, options, info, marker, mapTypeControl, zoomControl]);
 
 	useEffect(() => {
 		Traffic
 			? mapInstance.current?.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC)
 			: mapInstance.current?.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
-	}, [Traffic]);
+	}, [Traffic, kakao]);
 
 	return (
 		<Layout name={'Location'}>
@@ -80,7 +89,7 @@ function Location() {
 			<nav>
 				<button onClick={() => setTraffic(!Traffic)}>{Traffic ? 'Traffic ON' : 'Traffic OFF'}</button>
 				<ul className='branch'>
-					{info.map((el, idx) => {
+					{info.current.map((el, idx) => {
 						let isOn = '';
 						Index === idx && (isOn = 'on');
 						return (

@@ -47,7 +47,7 @@ function Location() {
 		image: markerImage,
 	});
 
-	//zoomControl
+	//type,zoomControl
 	const mapTypeControl = new kakao.maps.MapTypeControl();
 	const zoomControl = new kakao.maps.ZoomControl();
 
@@ -67,23 +67,28 @@ function Location() {
 	return (
 		<Layout name={'Location'}>
 			<div id='map' ref={container}></div>
-			<button onClick={() => setTraffic(!Traffic)}>{Traffic ? 'Traffic ON' : 'Traffic OFF'}</button>
-			<ul className='branch'>
-				{info.map((el, idx) => {
-					return (
-						<li
-							key={idx}
-							onClick={() => {
-								//각 버튼 클릭시 클릭한 순번으로 Index state변경
-								setIndex(idx);
-								setTraffic(false);
-							}}
-						>
-							{el.title}
-						</li>
-					);
-				})}
-			</ul>
+			<nav>
+				<button onClick={() => setTraffic(!Traffic)}>{Traffic ? 'Traffic ON' : 'Traffic OFF'}</button>
+				<ul className='branch'>
+					{info.map((el, idx) => {
+						let isOn = '';
+						Index === idx && (isOn = 'on');
+						return (
+							<li
+								key={idx}
+								className={isOn}
+								onClick={() => {
+									//각 버튼 클릭시 클릭한 순번으로 Index state변경
+									setIndex(idx);
+									setTraffic(false);
+								}}
+							>
+								{el.title}
+							</li>
+						);
+					})}
+				</ul>
+			</nav>
 		</Layout>
 	);
 }

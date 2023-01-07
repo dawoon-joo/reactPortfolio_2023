@@ -56,6 +56,15 @@ function Location() {
 		marker.setMap(mapInstance.current);
 		mapInstance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 		mapInstance.current.addControl(zoomControl, kakao.maps.ControlPosition.LEFT);
+
+		//resize center
+		const setCenter = () => {
+			mapInstance.current.setCenter(info[Index].latlng);
+		};
+		window.addEventListener('resize', setCenter);
+		return () => {
+			window.removeEventListener('resize', setCenter);
+		};
 	}, [Index]);
 
 	useEffect(() => {

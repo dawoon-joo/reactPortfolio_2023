@@ -33,6 +33,22 @@ function Community() {
 				<button onClick={resetForm}>CANCEL</button>
 				<button onClick={createPost}>WRITE</button>
 			</div>
+
+			<div className='showBox'>
+				{Posts.map((post, idx) => {
+					return (
+						<article key={idx}>
+							<h2>{post.title}</h2>
+							<p>{post.content}</p>
+
+							<div className='btnSet'>
+								<button>EDIT</button>
+								<button>DELETE</button>
+							</div>
+						</article>
+					);
+				})}
+			</div>
 		</Layout>
 	);
 }

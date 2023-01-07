@@ -49,6 +49,12 @@ function Members() {
 		setSubmit(true);
 	};
 
+	const handleReset = () => {
+		setSubmit(false);
+		setErr({});
+		setVal(initVal);
+	};
+
 	useEffect(() => {
 		const len = Object.keys(Err).length;
 		if (len === 0 && Submit) {
@@ -129,7 +135,7 @@ function Members() {
 
 							<tr>
 								<th colSpan='2'>
-									<input type='reset' value='cancel' />
+									<input type='reset' value='cancel' onClick={handleReset} />
 									<input type='submit' value='send' />
 								</th>
 							</tr>

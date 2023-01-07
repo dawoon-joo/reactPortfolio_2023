@@ -52,6 +52,7 @@ function Location() {
 	const zoomControl = new kakao.maps.ZoomControl();
 
 	useEffect(() => {
+		container.current.innerHTML = '';
 		mapInstance.current = new kakao.maps.Map(container.current, options);
 		marker.setMap(mapInstance.current);
 		mapInstance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);

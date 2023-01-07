@@ -41,6 +41,12 @@
 					border: 1px solid #aaa;
 					padding: 6px 10px;
 				}
+				input[type='password'],
+				textarea {
+					width: 40%;
+					border: 1px solid #aaa;
+					padding: 6px 10px;
+				}
 				span.err {
 					font: 11px/1 '돋움';
 					color: hotpink;

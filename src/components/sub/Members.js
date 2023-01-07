@@ -7,6 +7,7 @@ function Members() {
 		email: '',
 		pwd1: '',
 		pwd2: '',
+		comments: '',
 	};
 	const [Val, setVal] = useState(initVal);
 	const [Err, setErr] = useState({});
@@ -27,6 +28,9 @@ function Members() {
 		}
 		if (value.email.length < 8 || !/@/.test(value.email)) {
 			errs.email = '이메일은 8글자 이상입력, @를 포함하세요.';
+		}
+		if (Val.comments.length < 20) {
+			errs.comments = '남기는 말은 20글자 이상 입력하세요';
 		}
 		return errs;
 	};
@@ -95,6 +99,26 @@ function Members() {
 									<span className='err'>{Err.email}</span>
 								</td>
 							</tr>
+
+							{/* comments */}
+							<tr>
+								<th scope='row'>
+									<label htmlFor='comments'>COMMENTS</label>
+								</th>
+								<td>
+									<textarea
+										name='comments'
+										id='comments'
+										cols='30'
+										rows='5'
+										value={Val.comments}
+										onChange={handleChange}
+										placeholder='남기는 말을 입력하세요.'
+									></textarea>
+									<span className='err'>{Err.comments}</span>
+								</td>
+							</tr>
+
 							<tr>
 								<th colSpan='2'>
 									<input type='reset' value='cancel' />

@@ -47,9 +47,15 @@ function Location() {
 		image: markerImage,
 	});
 
+	//zoomControl
+	const mapTypeControl = new kakao.maps.MapTypeControl();
+	const zoomControl = new kakao.maps.ZoomControl();
+
 	useEffect(() => {
 		mapInstance.current = new kakao.maps.Map(container.current, options);
 		marker.setMap(mapInstance.current);
+		mapInstance.current.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+		mapInstance.current.addControl(zoomControl, kakao.maps.ControlPosition.LEFT);
 	}, [Index]);
 
 	useEffect(() => {

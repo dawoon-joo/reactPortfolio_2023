@@ -44,7 +44,7 @@ function Youtube() {
 					);
 				})}
 			</Layout>
-			{Open && <Modal></Modal>}
+			{Open && <Modal setOpen={setOpen}></Modal>}
 		</>
 	);
 }

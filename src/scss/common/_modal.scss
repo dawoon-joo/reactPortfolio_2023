@@ -20,6 +20,9 @@
 			object-fit: cover;
 			border: none;
 		}
+		img {
+			object-fit: contain;
+		}
 	}
 	.close {
 		font: bold 14px/1 'arial';

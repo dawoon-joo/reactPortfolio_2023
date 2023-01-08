@@ -42,7 +42,6 @@ function Community() {
 			//데이터가 있으면 해당 데이터를 객체형식으로 parsing해서 리턴
 			return JSON.parse(data);
 		} else {
-			//데이터가 없으면 빈 배열을 리턴
 			return dummyPosts;
 		}
 	};
@@ -111,12 +110,6 @@ function Community() {
 			})
 		);
 	};
-	useEffect(() => {
-		// console.log('fetching');
-		// axios.get(`${process.env.PUBLIC_URL}/DB/dummyPosts.json`).then((json) => {
-		// 	setPosts(json.data.posts);
-		// });
-	}, []);
 
 	useEffect(() => {
 		console.log('update');

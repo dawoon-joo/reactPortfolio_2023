@@ -4,6 +4,7 @@ import axios from 'axios';
 import Masonry from 'react-masonry-component';
 
 function Gallery() {
+	const myId = '192929270@N04';
 	const masonryOptions = { transitionDuration: '0.5s' };
 	const frame = useRef(null);
 	const input = useRef(null);
@@ -55,11 +56,18 @@ function Gallery() {
 	const showUser = (e) => {
 		getFlickr({ type: 'user', user: e.target.innerText });
 		frame.current.classList.remove('on');
-		setLoading(false);
+		setLoading(true);
+	};
+
+	const showMine = () => {
+		getFlickr({ type: 'user', user: myId });
+		frame.current.classList.remove('on');
+		setLoading(true);
 	};
 
 	useEffect(() => {
-		getFlickr({ type: 'interest' });
+		getFlickr({ type: 'user', user: myId });
+		// getFlickr({ type: 'interest' });
 		//getFlickr({type: 'search', tags: '하늘'})
 	}, []);
 
@@ -73,6 +81,7 @@ function Gallery() {
 
 				<nav>
 					<button onClick={showInterest}>Interest Gallery</button>
+					<button onClick={showMine}>My Gallery</button>
 				</nav>
 			</div>
 			{Loading && <img className='loading' src={`${process.env.PUBLIC_URL}/img/loading.gif`} alt='로딩이미지' />}

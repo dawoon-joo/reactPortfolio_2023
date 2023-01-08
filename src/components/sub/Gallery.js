@@ -1,11 +1,13 @@
 import Layout from '../common/Layout';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Masonry from 'react-masonry-component';
 
 function Gallery() {
 	const masonryOptions = { transitionDuration: '0.5s' };
+	const frame = useRef(null);
 	const [Items, setItems] = useState([]);
+	const [Loading, setLoading] = useState(true);
 
 	const getFlickr = async (opt) => {
 		const baseURL = 'https://www.flickr.com/services/rest/?format=json&nojsoncallback=1';
@@ -20,6 +22,11 @@ function Gallery() {
 
 		const result = await axios.get(url);
 		setItems(result.data.photos.photo);
+
+		setTimeout(() => {
+			frame.current.classList.add('on');
+			setLoading(false);
+		}, 500);
 	};
 
 	useEffect(() => {
@@ -29,7 +36,27 @@ function Gallery() {
 
 	return (
 		<Layout name={'Gallery'}>
-			<div className='frame'>
+			<button
+				onClick={() => {
+					frame.current.classList.remove('on');
+					setLoading(true);
+					getFlickr({ type: 'interest' });
+				}}
+			>
+				Interest Gallery
+			</button>
+
+			<button
+				onClick={() => {
+					frame.current.classList.remove('on');
+					setLoading(true);
+					getFlickr({ type: 'search', tags: '하늘' });
+				}}
+			>
+				Search Gallery
+			</button>
+			{Loading && <img className='loading' src={`${process.env.PUBLIC_URL}/img/loading.gif`} alt='로딩이미지' />}
+			<div className='frame' ref={frame}>
 				<Masonry elementType='div' options={masonryOptions}>
 					{Items.map((item, idx) => {
 						return (

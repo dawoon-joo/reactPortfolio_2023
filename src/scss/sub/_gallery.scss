@@ -1,5 +1,19 @@
 .Gallery {
+	.loading {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 	.frame {
+		opacity: 0;
+		transform: translateY(200px);
+		transition: opacity 0.5s, transform 0.5s;
+
+		&.on {
+			opacity: 1;
+			transform: translateY(0px);
+		}
 		&::after {
 			content: '';
 			display: block;

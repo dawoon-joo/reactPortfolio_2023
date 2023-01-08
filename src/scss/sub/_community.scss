@@ -86,3 +86,36 @@
 		}
 	}
 }
+
+@media screen and (max-width: $tablet) {
+	.Community {
+		> .inner {
+			.inputBox {
+				input[type='text'],
+				textarea {
+					width: 100%;
+				}
+				.btnSet {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+
+					button {
+						width: 47%;
+						margin-right: 0;
+					}
+				}
+			}
+
+			.showBox {
+				article {
+					.txt,
+					.editTxt,
+					.btnSet {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}

@@ -15,11 +15,13 @@ function Gallery() {
 		const key = 'ae5dbef0587895ed38171fcda4afb648';
 		const method_interest = 'flickr.interestingness.getList';
 		const method_search = 'flickr.photos.search';
+		const method_user = 'flickr.people.getPhotos';
 		const num = 20;
 		let url = '';
 
 		if (opt.type === 'interest') url = `${baseURL}&method=${method_interest}&api_key=${key}&per_page=${num}`;
 		if (opt.type === 'search') url = `${baseURL}&method=${method_search}&api_key=${key}&per_page=${num}&tags=${opt.tags}`;
+		if (opt.type === 'user') url = `${baseURL}&method=${method_user}&api_key=${key}&per_page=${num}&user_id=${opt.user}`;
 
 		const result = await axios.get(url);
 		if (result.data.photos.photo.length === 0) {
@@ -48,6 +50,12 @@ function Gallery() {
 		getFlickr({ type: 'search', tags: result });
 		frame.current.classList.remove('on');
 		setLoading(true);
+	};
+
+	const showUser = (e) => {
+		getFlickr({ type: 'user', user: e.target.innerText });
+		frame.current.classList.remove('on');
+		setLoading(false);
 	};
 
 	useEffect(() => {
@@ -84,7 +92,7 @@ function Gallery() {
 											alt={item.owner}
 											onError={(e) => e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif')}
 										/>
-										<span>{item.owner}</span>
+										<span onClick={showUser}>{item.owner}</span>
 									</div>
 								</div>
 							</article>

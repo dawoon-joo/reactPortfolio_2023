@@ -9,11 +9,15 @@
 		font: bold 200px/1 'arial';
 		color: #fff;
 	}
-	h2 {
-		font: bold 150px/1 'arial';
-		color: rgba(0, 0, 0, 0.3);
-		position: absolute;
-		top: 13vh;
-		left: 100px;
+	.wrap {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+
+		article {
+			width: 30%;
+			padding: 30px;
+			border: 1px solid #333;
+		}
 	}
 }

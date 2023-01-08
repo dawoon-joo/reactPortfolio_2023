@@ -12,16 +12,18 @@ function News({ Scrolled, currentPos }) {
 	return (
 		<section id='news' className='myScroll'>
 			<h1>news</h1>
-			{data.current.map((data, idx) => {
-				if (idx >= 3) return null;
+			<div className='wrap'>
+				{data.current.map((data, idx) => {
+					if (idx >= 3) return null;
 
-				return (
-					<article key={idx}>
-						<h5>{data.title}</h5>
-						<p>{data.content}</p>
-					</article>
-				);
-			})}
+					return (
+						<article key={idx}>
+							<h5>{data.title}</h5>
+							<p>{data.content}</p>
+						</article>
+					);
+				})}
+			</div>
 		</section>
 	);
 }

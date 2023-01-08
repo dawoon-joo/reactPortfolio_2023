@@ -25,6 +25,15 @@ function Community() {
 		setPosts(Posts.filter((_, idx) => idx !== index));
 	};
 
+	const enableUpdate = (index) => {
+		setPosts(
+			Posts.map((post, idx) => {
+				if (idx === index) post.enableUpdate = true;
+				return post;
+			})
+		);
+	};
+
 	useEffect(() => {
 		axios.get(`${process.env.PUBLIC_URL}/DB/dummyPosts.json`).then((json) => {
 			setPosts(json.data.posts);
@@ -47,15 +56,37 @@ function Community() {
 				{Posts.map((post, idx) => {
 					return (
 						<article key={idx}>
-							<div className='txt'>
-								<h2>{post.title}</h2>
-								<p>{post.content}</p>
-							</div>
+							{post.enableUpdate ? (
+								//수정 모드
+								<>
+									<div className='txt'>
+										<h2>
+											<input type='text' defaultValue={post.title} />
+											<br />
+											<textarea cols='30' rows='3' defaultValue={post.content}></textarea>
+											<br />
+										</h2>
+									</div>
 
-							<div className='btnSet'>
-								<button>EDIT</button>
-								<button onClick={() => deletePost(idx)}>DELETE</button>
-							</div>
+									<div className='btnSet'>
+										<button onClick={() => enableUpdate(idx)}>EDIT</button>
+										<button onClick={() => deletePost(idx)}>DELETE</button>
+									</div>
+								</>
+							) : (
+								//출력 모드
+								<>
+									<div className='txt'>
+										<h2>{post.title}</h2>
+										<p>{post.content}</p>
+									</div>
+
+									<div className='btnSet'>
+										<button onClick={() => enableUpdate(idx)}>EDIT</button>
+										<button onClick={() => deletePost(idx)}>DELETE</button>
+									</div>
+								</>
+							)}
 						</article>
 					);
 				})}

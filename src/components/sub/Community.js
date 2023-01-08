@@ -6,6 +6,7 @@ function Community() {
 	const input = useRef(null);
 	const textarea = useRef(null);
 	const [Posts, setPosts] = useState([]);
+	const [Allowed, setAllowed] = useState(true);
 
 	const resetForm = () => {
 		input.current.value = '';
@@ -26,9 +27,21 @@ function Community() {
 	};
 
 	const enableUpdate = (index) => {
+		if (!Allowed) return;
+		setAllowed(false);
 		setPosts(
 			Posts.map((post, idx) => {
 				if (idx === index) post.enableUpdate = true;
+				return post;
+			})
+		);
+	};
+
+	const disableUpdate = (index) => {
+		setAllowed(true);
+		setPosts(
+			Posts.map((post, idx) => {
+				if (idx === index) post.enableUpdate = false;
 				return post;
 			})
 		);
@@ -69,8 +82,8 @@ function Community() {
 									</div>
 
 									<div className='btnSet'>
-										<button onClick={() => enableUpdate(idx)}>EDIT</button>
-										<button onClick={() => deletePost(idx)}>DELETE</button>
+										<button onClick={() => disableUpdate(idx)}>CANCEL</button>
+										<button onClick={() => deletePost(idx)}>UPDATED</button>
 									</div>
 								</>
 							) : (

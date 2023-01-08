@@ -44,7 +44,7 @@
 				flex-wrap: wrap;
 
 				.txt {
-					width: calc(100% - 150px);
+					width: calc(100% - 170px);
 					h2 {
 						margin-bottom: 10px;
 					}
@@ -61,11 +61,12 @@
 					}
 				}
 				.btnSet {
-					width: 100px;
+					width: 120px;
 					display: flex;
 					align-items: center;
 					margin-top: 20px;
-					justify-content: space-between;
+					justify-content: flex-end;
+					gap: 10px;
 
 					button {
 						background: transparent;

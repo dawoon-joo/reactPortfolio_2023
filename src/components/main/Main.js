@@ -7,13 +7,13 @@ import Visual from './Visual';
 
 import { useState } from 'react';
 
-function Main() {
+function Main({ menuOpen }) {
 	const [Scrolled, setScrolled] = useState(0);
 	const [Pos, setPos] = useState([]);
 
 	return (
 		<main>
-			<Header type={'main'} />
+			<Header type={'main'} menuOpen={menuOpen} />
 			<Visual />
 			<News Scrolled={Scrolled} currentPos={Pos[1]} />
 			<Pics Scrolled={Scrolled} currentPos={Pos[2]} />

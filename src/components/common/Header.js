@@ -1,11 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import { useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import Menu from './Menu';
 
 function Header(props) {
-	const menu = useRef(null);
 	const active = { color: 'aqua' };
 	return (
 		<>
@@ -48,11 +45,9 @@ function Header(props) {
 							</NavLink>
 						</li>
 					</ul>
-					<FontAwesomeIcon icon={faBars} onClick={() => menu.current.toggle()} />
+					<FontAwesomeIcon icon={faBars} onClick={() => props.menuOpen.current.toggle()} />
 				</div>
 			</header>
-
-			<Menu ref={menu} />
 		</>
 	);
 }

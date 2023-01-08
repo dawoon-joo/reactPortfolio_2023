@@ -1,5 +1,6 @@
 import Layout from '../common/Layout';
 import { useRef, useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Community() {
 	const input = useRef(null);
@@ -25,8 +26,10 @@ function Community() {
 	};
 
 	useEffect(() => {
-		console.log(Posts);
-	}, [Posts]);
+		axios.get(`${process.env.PUBLIC_URL}/DB/dummyPosts.json`).then((json) => {
+			setPosts(json.data.posts);
+		});
+	}, []);
 	return (
 		<Layout name={'Community'}>
 			<div className='inputBox'>

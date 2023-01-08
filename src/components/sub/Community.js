@@ -37,16 +37,20 @@ function Community() {
 				<br />
 				<textarea cols='30' rows='4' placeholder='본문을 입력하세요' ref={textarea}></textarea>
 				<br />
-				<button onClick={resetForm}>CANCEL</button>
-				<button onClick={createPost}>WRITE</button>
+				<div className='btnSet'>
+					<button onClick={resetForm}>CANCEL</button>
+					<button onClick={createPost}>WRITE</button>
+				</div>
 			</div>
 
 			<div className='showBox'>
 				{Posts.map((post, idx) => {
 					return (
 						<article key={idx}>
-							<h2>{post.title}</h2>
-							<p>{post.content}</p>
+							<div className='txt'>
+								<h2>{post.title}</h2>
+								<p>{post.content}</p>
+							</div>
 
 							<div className='btnSet'>
 								<button>EDIT</button>

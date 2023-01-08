@@ -5,6 +5,45 @@
 		left: 50%;
 		transform: translateX(-50%);
 	}
+	.controls {
+		width: 100%;
+		padding: 10px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+		.searchBox {
+			input {
+				width: 200px;
+				height: 28px;
+				padding: 10px;
+				border: 1px solid #bbb;
+			}
+			button {
+				width: 80px;
+				height: 28px;
+				border: none;
+				background: #555;
+				font: 12px/1 'arial';
+				color: #fff;
+				cursor: pointer;
+				margin-left: 5px;
+			}
+		}
+
+		nav {
+			button {
+				width: 130px;
+				height: 28px;
+				border: none;
+				background: #555;
+				font: 12px/1 'arial';
+				color: #fff;
+				cursor: pointer;
+				margin-left: 5px;
+			}
+		}
+	}
 	.frame {
 		opacity: 0;
 		transform: translateY(200px);

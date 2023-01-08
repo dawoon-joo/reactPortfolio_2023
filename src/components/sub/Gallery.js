@@ -59,20 +59,12 @@ function Gallery() {
 		<Layout name={'Gallery'}>
 			<div className='controls'>
 				<div className='searchBox'>
-					<button
-						onClick={() => {
-							frame.current.classList.remove('on');
-							setLoading(true);
-							getFlickr({ type: 'interest' });
-						}}
-					>
-						Interest Gallery
-					</button>
+					<input type='text' ref={input} placeholder='검색어를 입력하세요' onKeyUp={(e) => e.key === 'Enter' && showSearch()} />
+					<button onClick={showSearch}>Search</button>
 				</div>
 
 				<nav>
-					<input type='text' ref={input} placeholder='검색어를 입력하세요' onKeyUp={(e) => e.key === 'Enter' && showSearch()} />
-					<button onClick={showSearch}>Search</button>
+					<button onClick={showInterest}>Interest Gallery</button>
 				</nav>
 			</div>
 			{Loading && <img className='loading' src={`${process.env.PUBLIC_URL}/img/loading.gif`} alt='로딩이미지' />}

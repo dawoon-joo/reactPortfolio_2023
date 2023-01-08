@@ -43,6 +43,7 @@ function Gallery() {
 
 	const showSearch = () => {
 		const result = input.current.value.trim();
+		if (!result) return alert('검색어를 입력하세요');
 		input.current.value = '';
 		getFlickr({ type: 'search', tags: result });
 		frame.current.classList.remove('on');

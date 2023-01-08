@@ -6,6 +6,7 @@ import Masonry from 'react-masonry-component';
 function Gallery() {
 	const masonryOptions = { transitionDuration: '0.5s' };
 	const frame = useRef(null);
+	const input = useRef(null);
 	const [Items, setItems] = useState([]);
 	const [Loading, setLoading] = useState(true);
 
@@ -29,6 +30,20 @@ function Gallery() {
 		}, 500);
 	};
 
+	const showInterest = () => {
+		getFlickr({ type: 'interest' });
+		frame.current.classList.remove('on');
+		setLoading(true);
+	};
+
+	const showSearch = () => {
+		const result = input.current.value.trim();
+		input.current.value = '';
+		getFlickr({ type: 'search', tags: result });
+		frame.current.classList.remove('on');
+		setLoading(true);
+	};
+
 	useEffect(() => {
 		getFlickr({ type: 'interest' });
 		//getFlickr({type: 'search', tags: '하늘'})
@@ -36,25 +51,24 @@ function Gallery() {
 
 	return (
 		<Layout name={'Gallery'}>
-			<button
-				onClick={() => {
-					frame.current.classList.remove('on');
-					setLoading(true);
-					getFlickr({ type: 'interest' });
-				}}
-			>
-				Interest Gallery
-			</button>
+			<div className='controls'>
+				<div className='searchBox'>
+					<button
+						onClick={() => {
+							frame.current.classList.remove('on');
+							setLoading(true);
+							getFlickr({ type: 'interest' });
+						}}
+					>
+						Interest Gallery
+					</button>
+				</div>
 
-			<button
-				onClick={() => {
-					frame.current.classList.remove('on');
-					setLoading(true);
-					getFlickr({ type: 'search', tags: '하늘' });
-				}}
-			>
-				Search Gallery
-			</button>
+				<nav>
+					<input type='text' ref={input} placeholder='검색어를 입력하세요' />
+					<button onClick={showSearch}>Search</button>
+				</nav>
+			</div>
 			{Loading && <img className='loading' src={`${process.env.PUBLIC_URL}/img/loading.gif`} alt='로딩이미지' />}
 			<div className='frame' ref={frame}>
 				<Masonry elementType='div' options={masonryOptions}>

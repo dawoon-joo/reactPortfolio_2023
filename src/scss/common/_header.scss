@@ -1,6 +1,7 @@
 header {
 	width: 100%;
-	background: #222;
+	background: transparent;
+
 	.inner {
 		width: 1180px;
 		height: 80px;
@@ -24,7 +25,7 @@ header {
 				a {
 					display: inline-block;
 					padding: 20px 30px;
-					font: bold 14px/1 'arial';
+					font: bold 16px/1 'arial';
 					color: #fff;
 				}
 			}
@@ -36,17 +37,22 @@ header {
 			right: 40px;
 			display: none;
 			cursor: pointer;
+			color: #fff;
 		}
 	}
 	&.main {
-		background: #fff;
+		background: transparent;
 		border-bottom: 1px solid #ccc;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
 		.inner {
 			h1 a {
-				color: #555;
+				color: #fff;
 			}
 			#gnb li a {
-				color: #555;
+				color: #fff;
 			}
 		}
 	}

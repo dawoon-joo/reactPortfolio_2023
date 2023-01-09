@@ -9,7 +9,7 @@ function Header(props) {
 			<header className={props.type}>
 				<div className='inner'>
 					<h1>
-						<NavLink exact to='/' activeStyle={active}>
+						<NavLink exact to='/'>
 							LOGO
 						</NavLink>
 					</h1>

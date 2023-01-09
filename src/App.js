@@ -29,7 +29,7 @@ function App() {
 
 	useEffect(() => {
 		dispatch(fetchYoutube());
-		dispatch(fetchFlickr({ type: 'user', user: '192929270@N04', num: '5' }));
+		dispatch(fetchFlickr({ type: 'user', user: '192929270@N04' }));
 	}, [dispatch]);
 	return (
 		<>

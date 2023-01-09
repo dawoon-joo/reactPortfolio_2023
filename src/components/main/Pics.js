@@ -11,6 +11,7 @@ function Pics({ Scrolled, currentPos }) {
 			<h1>pics</h1>
 			<div className='flickrWrap'>
 				{Pics.map((item, idx) => {
+					if (idx > 5) return null;
 					return (
 						<article key={idx}>
 							<div className='pic'>

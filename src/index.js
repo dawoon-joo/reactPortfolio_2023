@@ -5,10 +5,12 @@ import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import youtubeReducer from './redux/youtubeSlice';
+import flickrReducer from './redux/flickrSlice';
 
 const store = configureStore({
 	reducer: {
 		youtube: youtubeReducer,
+		flickr: flickrReducer,
 	},
 });
 

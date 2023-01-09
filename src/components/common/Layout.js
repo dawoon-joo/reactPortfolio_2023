@@ -2,8 +2,6 @@ import { useEffect, useRef } from 'react';
 function Layout(props) {
 	const frame = useRef('null');
 
-	console.log(frame);
-
 	useEffect(() => {
 		frame.current.classList.add('on');
 	}, []);

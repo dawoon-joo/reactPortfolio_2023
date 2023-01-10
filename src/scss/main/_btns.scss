@@ -22,3 +22,9 @@
 		}
 	}
 }
+
+@media screen and (max-width: $mobile) {
+	.scroll_navi {
+		right: 0;
+	}
+}

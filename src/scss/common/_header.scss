@@ -4,32 +4,110 @@ header {
 
 	.inner {
 		width: 1180px;
-		height: 80px;
+		height: 140px;
 		margin: 0 auto;
 		position: relative;
-		h1 {
+		transition: 0.5s;
+
+		&::after {
+			content: '';
+			display: block;
 			position: absolute;
-			bottom: 20px;
+			width: 100%;
+			height: 2px;
+			background: #ddd;
+			top: 78px;
+			z-index: -1;
+		}
+
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 3px;
+			background: #999;
+			bottom: 0px;
+			z-index: -1;
+		}
+
+		> h1 {
+			position: absolute;
 			left: 0;
+			top: 20px;
 			a {
 				font: bold 24px/1 'arial';
-				color: #fff;
+				color: #999;
 			}
 		}
 		#gnb {
+			width: 100%;
 			position: absolute;
 			bottom: 0;
-			right: 0;
+			left: 0;
 			li {
 				float: left;
+				width: calc(100% / 6);
+				text-align: center;
 				a {
-					display: inline-block;
-					padding: 20px 30px;
-					font: bold 16px/1 'arial';
-					color: #fff;
+					position: relative;
+					display: block;
+					padding: 24px 30px;
+					font: 14px/1 'arial';
+					color: #999;
+
+					&:hover,
+					&.on {
+						color: $titleColor;
+						transition: 0.5s;
+					}
+
+					&:hover::after,
+					&.on::after {
+						padding: 1px 0;
+						width: 100%;
+						content: '';
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 50%;
+						transform: translateX(-50%);
+						border-top: 3px solid $titleColor;
+						transition: 0.5s;
+					}
 				}
 			}
 		}
+
+		.utill {
+			position: absolute;
+			right: 0;
+			top: 30px;
+
+			li {
+				position: relative;
+				float: left;
+				margin-left: 20px;
+
+				&:first-of-type::after {
+					content: '';
+					display: block;
+					width: 1px;
+					height: 50%;
+					background: #ddd;
+					position: absolute;
+					top: 60%;
+					right: -10px;
+					transform: translateY(-50%);
+				}
+
+				a {
+					font: 12px/1 'arial';
+					color: #999;
+				}
+			}
+		}
+
 		.fa-bars {
 			font-size: 24px;
 			position: absolute;
@@ -37,25 +115,10 @@ header {
 			right: 40px;
 			display: none;
 			cursor: pointer;
-			color: #fff;
+			color: #999;
 		}
 	}
-	&.main {
-		background: transparent;
-		border-bottom: 1px solid #ccc;
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 3;
-		.inner {
-			h1 a {
-				color: #fff;
-			}
-			#gnb li a {
-				color: #fff;
-			}
-		}
-	}
+
 	&.sub {
 		background: #222;
 		.inner {
@@ -73,14 +136,28 @@ header {
 	header {
 		.inner {
 			width: 100%;
-			h1 {
-				left: 40px;
-			}
-			#gnb {
+			height: 100px;
+			&::after {
 				display: none;
+			}
+			&::before {
+				height: 2px;
+			}
+			h1 {
+				left: 20px;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+			.menuWeb {
+				display: none;
+			}
+			.menuMo {
+				display: block;
 			}
 			.fa-bars {
 				display: block;
+				top: 50%;
+				transform: translateY(-50%);
 			}
 		}
 	}

@@ -14,6 +14,7 @@ function Community() {
 	const textareaEdit = useRef(null);
 	const [Posts, setPosts] = useState(getLocalData());
 	const [Allowed, setAllowed] = useState(true);
+	var myArray = ['a', 'b', 'c', 'd', 'e'];
 
 	const resetForm = () => {
 		input.current.value = '';
@@ -92,7 +93,7 @@ function Community() {
 			</div>
 
 			<div className='showBox'>
-				{Posts.map((post, idx) => {
+				{Posts.reverse().map((post, idx) => {
 					return (
 						<article key={idx}>
 							{post.enableUpdate ? (
@@ -116,6 +117,7 @@ function Community() {
 								//출력 모드
 								<>
 									<div className='txt'>
+										<h1>{myArray}</h1>
 										<h2>{post.title}</h2>
 										<p>{post.content}</p>
 									</div>

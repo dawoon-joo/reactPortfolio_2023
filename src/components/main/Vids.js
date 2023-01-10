@@ -1,10 +1,13 @@
 import { useSelector } from 'react-redux';
 import { useRef, useEffect } from 'react';
 import Anime from '../../asset/anime';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { faCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 function Vids({ Scrolled, currentPos }) {
 	const Vids = useSelector((store) => store.youtube.data);
-
 	const base = -window.innerHeight / 3;
 	let scroll = Scrolled - base - currentPos || 0;
 	scroll < 0 && (scroll = 0);
@@ -50,31 +53,38 @@ function Vids({ Scrolled, currentPos }) {
 
 	useEffect(() => {
 		init();
-	}, []);
+	}, [Vids]);
 
 	return (
 		<section id='vids' className='myScroll'>
-			<h1>
-				THRIVE IN GREAT <br /> COMPANY.EXPLORE <br />
-				CAREERS AT BAIN
-			</h1>
-			<div className='youtubeWrap' ref={slide}>
-				<div className='panel'>
-					{Vids.map((data, idx) => {
-						return (
-							<article key={idx}>
-								<div className='pic'>
-									<img src={data.snippet.thumbnails.high.url} alt={data.snippet.title} />
-								</div>
-							</article>
-						);
-					})}
-					<button className='prev' onClick={prevSlide}>
-						prev
-					</button>
-					<button className='next' onClick={nextSlide}>
-						next
-					</button>
+			<div className='inner'>
+				<h1>
+					THRIVE IN GREAT <br /> COMPANY.EXPLORE <br />
+					CAREERS AT BAIN
+				</h1>
+				<NavLink className='circle' to='/youtube'>
+					<div className='bg'>Youtube view more</div>
+				</NavLink>
+				<div className='youtubeWrap' ref={slide}>
+					<div className='panel'>
+						{Vids.map((data, idx) => {
+							return (
+								<article key={idx}>
+									<div className='pic'>
+										<img src={data.snippet.thumbnails.high.url} alt={data.snippet.title} />
+									</div>
+								</article>
+							);
+						})}
+					</div>
+					<div className='btnWrap'>
+						<button className='prev' onClick={prevSlide}>
+							<FontAwesomeIcon icon={faCircleLeft} />
+						</button>
+						<button className='next' onClick={nextSlide}>
+							<FontAwesomeIcon icon={faCircleRight} />
+						</button>
+					</div>
 				</div>
 			</div>
 		</section>

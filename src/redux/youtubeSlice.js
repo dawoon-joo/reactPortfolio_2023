@@ -3,8 +3,8 @@ import axios from 'axios';
 
 //비동기 서버통신으로 데이터를 전달 받고 첫번째 인수로 넣은 문자값으로 내부 액션타입을 자동 생성해 액션객체 생성
 export const fetchYoutube = createAsyncThunk('youtube/requestYoutube', async () => {
-	const key = 'AIzaSyDq1ThuKd63CGMc178rIvnscNriIww6L4A';
-	const playlist = 'PLHtvRFLN5v-W5bQjvyH8QTdQQhgflJ3nu';
+	const key = 'AIzaSyAkj4gHYVRHLVLiPqRy3wSveyrq6ff1SeU';
+	const playlist = 'PLWKqsm200CTkG61cNeBTKl0Yc9ifFJYyc';
 	const num = 6;
 	const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=${key}&playlistId=${playlist}&maxResults=${num}`;
 

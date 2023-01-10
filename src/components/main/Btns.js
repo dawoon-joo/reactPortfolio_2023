@@ -35,11 +35,10 @@ function Btns({ setScrolled, setPos }) {
 
 	useEffect(() => {
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-		console.log(pos);
 		getPos();
 		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);
-
+		console.log(pos);
 		return () => {
 			window.removeEventListener('resize', getPos);
 			window.removeEventListener('scroll', activation);

@@ -14,7 +14,6 @@ function Community() {
 	const textareaEdit = useRef(null);
 	const [Posts, setPosts] = useState(getLocalData());
 	const [Allowed, setAllowed] = useState(true);
-	var myArray = ['a', 'b', 'c', 'd', 'e'];
 
 	const resetForm = () => {
 		input.current.value = '';
@@ -23,7 +22,6 @@ function Community() {
 
 	const createPost = () => {
 		if (!input.current.value.trim() || !textarea.current.value.trim()) {
-			resetForm();
 			return alert('제목과 본문을 모두 입력하세요');
 		}
 		setPosts([{ title: input.current.value, content: textarea.current.value }, ...Posts]);
@@ -93,7 +91,7 @@ function Community() {
 			</div>
 
 			<div className='showBox'>
-				{Posts.reverse().map((post, idx) => {
+				{Posts.map((post, idx) => {
 					return (
 						<article key={idx}>
 							{post.enableUpdate ? (
@@ -117,7 +115,6 @@ function Community() {
 								//출력 모드
 								<>
 									<div className='txt'>
-										<h1>{myArray}</h1>
 										<h2>{post.title}</h2>
 										<p>{post.content}</p>
 									</div>

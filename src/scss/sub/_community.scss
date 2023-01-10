@@ -47,6 +47,10 @@
 					width: calc(100% - 170px);
 					h2 {
 						margin-bottom: 10px;
+						word-wrap: break-word;
+					}
+					P {
+						word-wrap: break-word;
 					}
 					input,
 					textarea {

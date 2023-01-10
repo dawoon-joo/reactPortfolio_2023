@@ -19,8 +19,8 @@ function Btns({ setScrolled, setPos }) {
 	const activation = useCallback(() => {
 		const btns = btnRef.current.children;
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
-		const scroll = window.scrollY;
-		const base = -window.innerHeight / 3;
+		const scroll = window.scrollY || window.pageYOffset;
+		const base = -window.innerHeight / 2;
 		setScrolled(scroll);
 
 		pos.current.forEach((pos, idx) => {
@@ -35,7 +35,7 @@ function Btns({ setScrolled, setPos }) {
 
 	useEffect(() => {
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-
+		console.log(pos);
 		getPos();
 		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);

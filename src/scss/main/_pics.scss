@@ -1,28 +1,142 @@
 #pics {
 	width: 100%;
 	height: 100vh;
-	background: lightyellow;
+	background: #fff;
 	position: relative;
-	padding: 10vw;
 	overflow: hidden;
-
-	.flickrWrap {
-		width: 100%;
+	.inner {
+		width: 1180px;
 		height: 100%;
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
+		margin: 0 auto;
+		padding: 50px 0;
+		position: relative;
+		overflow: hidden;
+		> h1 {
+			font: bold 50px/1.3 'arial';
+			color: #666;
+			letter-spacing: 1.3px;
+			margin-top: 40px;
+		}
 
-		article {
-			width: calc(100% / 3);
-			height: 200px;
-			.pic {
-				width: 100%;
-				height: 100%;
-				img {
+		.txtBox {
+			width: calc(100% / 3 - 20px);
+			height: 300px;
+			position: absolute;
+			left: 0;
+			top: 330px;
+			padding-right: 40px;
+			z-index: 1;
+			p {
+				font: normal 16px/1.4 'arial';
+				color: #888;
+				margin-bottom: 30px;
+			}
+			a {
+				display: block;
+				font: 18px/1 'arial';
+				color: #555;
+			}
+		}
+		.flickrWrap {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+
+			article {
+				width: calc(100% / 3 - 20px);
+				height: 300px;
+				margin-bottom: 20px;
+				&:first-of-type {
+					margin-left: calc(100% / 3 + 10px);
+				}
+				.pic {
 					width: 100%;
 					height: 100%;
-					object-fit: cover;
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	#pics {
+		.inner {
+			width: 100%;
+			padding: 50px 20px;
+			> h1 {
+				font: bold 33px/1.3 'arial';
+			}
+
+			.txtBox {
+				width: calc(100% / 2 - 20px);
+				height: 200px;
+				overflow: hidden;
+				top: 310px;
+				padding: 0 20px;
+				p {
+					font: normal 12px/1.4 'arial';
+					color: #888;
+					margin-bottom: 20px;
+				}
+				a {
+					display: block;
+					font: 14px/1 'arial';
+					color: #555;
+				}
+			}
+			.flickrWrap {
+				padding: 0 20px;
+				article {
+					width: calc(100% / 2 - 20px);
+					height: 200px;
+					&:first-of-type {
+						margin-left: calc(100% / 2 + 20px);
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	#pics {
+		.inner {
+			width: 100%;
+			padding: 50px 20px;
+			> h1 {
+				font: bold 20px/1.3 'arial';
+				margin-bottom: 20px;
+				margin-top: 10px;
+			}
+
+			.txtBox {
+				width: calc(100%);
+				height: auto;
+				overflow: hidden;
+				position: initial;
+				padding: 0;
+				p {
+					font: normal 12px/1.2 'arial';
+				}
+			}
+			.flickrWrap {
+				padding: 0 20px;
+				height: 700px;
+				article {
+					width: 100%;
+					height: calc(100% / 5 - 20px);
+					&:first-of-type {
+						margin-left: 0;
+					}
 				}
 			}
 		}

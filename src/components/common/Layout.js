@@ -4,6 +4,7 @@ function Layout(props) {
 
 	useEffect(() => {
 		frame.current.classList.add('on');
+		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 	}, []);
 
 	return (

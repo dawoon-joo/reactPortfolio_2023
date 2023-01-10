@@ -7,20 +7,40 @@
 	overflow: hidden;
 
 	.youtubeWrap {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-
-		article {
-			width: calc(100% / 3);
-			.pic {
-				width: 100%;
-				img {
+		width: calc(100% - 20px);
+		height: 20vh;
+		border: 1px solid red;
+		position: relative;
+		margin: 50px auto;
+		overflow: hidden;
+		.panel {
+			margin-left: -100%;
+			height: 100%;
+			article {
+				float: left;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: #fff;
+				font-size: 100px;
+				.pic {
 					width: 100%;
-					object-fit: cover;
+					img {
+						width: 100%;
+						object-fit: cover;
+					}
 				}
+			}
+			.prev {
+				position: absolute;
+				left: 20px;
+				top: 50%;
+			}
+			.next {
+				position: absolute;
+				right: 20px;
+				top: 50%;
 			}
 		}
 	}

@@ -38,7 +38,7 @@ function Btns({ setScrolled, setPos }) {
 		getPos();
 		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);
-		console.log(pos);
+		// console.log(pos);
 		return () => {
 			window.removeEventListener('resize', getPos);
 			window.removeEventListener('scroll', activation);

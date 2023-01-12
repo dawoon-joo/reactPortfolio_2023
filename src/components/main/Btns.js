@@ -20,7 +20,7 @@ function Btns({ setScrolled, setPos }) {
 		const btns = btnRef.current.children;
 		const secs = btnRef.current.parentElement.querySelectorAll('.myScroll');
 		const scroll = window.scrollY || window.pageYOffset;
-		const base = -window.innerHeight / 2;
+		const base = -window.innerHeight / 3;
 		setScrolled(scroll);
 
 		pos.current.forEach((pos, idx) => {
@@ -35,15 +35,18 @@ function Btns({ setScrolled, setPos }) {
 
 	useEffect(() => {
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-		getPos();
 		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);
-		// console.log(pos);
+		console.log(pos);
 		return () => {
 			window.removeEventListener('resize', getPos);
 			window.removeEventListener('scroll', activation);
 		};
 	}, [getPos, activation]);
+
+	useEffect(() => {
+		getPos();
+	});
 
 	return (
 		<ul className='scroll_navi' ref={btnRef}>

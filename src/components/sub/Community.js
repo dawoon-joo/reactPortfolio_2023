@@ -12,6 +12,7 @@ function Community() {
 	const textarea = useRef(null);
 	const inputEdit = useRef(null);
 	const textareaEdit = useRef(null);
+	const span = useRef(null);
 	const [Posts, setPosts] = useState(getLocalData());
 	const [Allowed, setAllowed] = useState(true);
 
@@ -117,6 +118,7 @@ function Community() {
 									<div className='txt'>
 										<h2>{post.title}</h2>
 										<p>{post.content}</p>
+										<p ref={span}>{'0' + (idx + 1)}</p>
 									</div>
 
 									<div className='btnSet'>

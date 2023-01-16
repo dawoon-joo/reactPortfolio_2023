@@ -2,22 +2,66 @@
 	width: 100%;
 	figure {
 		width: 100%;
-		height: 300px;
-		background: aqua;
+		height: 500px;
+		background: #000;
 		opacity: 0;
 		transition: 1s;
+		.inner {
+			width: 1180px;
+			height: 100%;
+			margin: 0 auto;
+			color: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			transition: 0.5s;
+			&::before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 40px;
+				background: #eee;
+			}
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 40px;
+				background: #eee;
+			}
+			p {
+				font: bold 60px/1.2 'arial';
+				color: #fff;
+				transition: 0.5s;
+				span {
+					margin-top: 30px;
+					display: block;
+					font: normal 40px/1 'arial';
+					transition: 0.5s;
+				}
+			}
+		}
 	}
 	> .inner {
 		width: 1180px;
-		margin: 100px auto 150px;
+		margin: 0 auto;
 		position: relative;
 		opacity: 0;
 		transform: translateY(100px);
 		transition: all 0.5s;
 		h1 {
-			font: normal 30px/1 'arial';
-			color: #777;
+			font: normal 50px/1 'arial';
+			color: #fff;
+			margin-top: 30px;
 			margin-bottom: 50px;
+			transition: 0.5s;
 		}
 	}
 	&.on {
@@ -34,12 +78,42 @@
 @media screen and (max-width: $tablet) {
 	.content {
 		figure {
-			height: 200px;
+			.inner {
+				width: 100%;
+			}
 		}
 		> .inner {
 			width: 100%;
 			padding: 0 40px;
-			margin: 80px auto 120px;
+			margin: 0 auto;
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.content {
+		figure {
+			.inner {
+				width: 100%;
+				p {
+					font: bold 30px/1.2 'arial';
+					color: #fff;
+					span {
+						margin-top: 30px;
+						display: block;
+						font: normal 20px/1 'arial';
+					}
+				}
+			}
+		}
+		> .inner {
+			width: 100%;
+			padding: 0 40px;
+			margin: 0 auto;
+
+			h1 {
+				font: normal 30px/1 'arial';
+			}
 		}
 	}
 }

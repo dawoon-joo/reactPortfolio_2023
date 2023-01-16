@@ -74,6 +74,7 @@ header {
 						transform: translateX(-50%);
 						border-top: 3px solid $titleColor;
 						transition: 0.5s;
+						z-index: 2;
 					}
 				}
 			}
@@ -120,8 +121,17 @@ header {
 	}
 
 	&.sub {
-		background: #222;
+		background: #000;
 		.inner {
+			&::after {
+				background: #fff;
+				z-index: 1;
+			}
+
+			&::before {
+				background: #fff;
+				z-index: 1;
+			}
 			h1 a {
 				color: #fff;
 			}

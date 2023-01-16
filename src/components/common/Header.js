@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 function Header(props) {
-	const active = { color: 'aqua' };
+	const active = { color: '#4e6298' };
 	return (
 		<>
 			<header className={`${props.type} myScroll`}>

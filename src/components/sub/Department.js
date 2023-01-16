@@ -2,6 +2,9 @@ import Layout from '../common/Layout';
 import axios from 'axios';
 import { useEffect, useState, useRef } from 'react';
 import Anime from '../../asset/anime';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { faCircleLeft } from '@fortawesome/free-solid-svg-icons';
 
 function Department() {
 	const path = process.env.PUBLIC_URL;
@@ -58,17 +61,64 @@ function Department() {
 		<Layout name={'Department'}>
 			<div id='slider' ref={slide}>
 				<ul className='panel'>
-					<li className='s1'>1</li>
-					<li className='s2'>2</li>
-					<li className='s3'>3</li>
+					<li className='s1'>
+						<div className='pic'></div>
+						<div className='txt'>
+							<h2>Lorem, ipsum.</h2>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto adipisci a voluptatem vero, tenetur, deleniti tempore velit quae
+								aut rerum nostrum ea fugiat obcaecati excepturi, temporibus provident reprehenderit placeat repudiandae. Dolores laborum sequi
+								ratione, magnam voluptas ad tempora officiis quam quia accusantium ipsam adipisci molestias, reiciendis, iure aut repudiandae
+								distinctio?
+							</p>
+							<span>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit maxime labore tempora illum necessitatibus, numquam animi ex sed dolore
+								alias obcaecati iusto est laudantium dolores harum voluptate eligendi officia! Ipsa.
+							</span>
+						</div>
+					</li>
+					<li className='s2'>
+						<div className='pic'></div>
+						<div className='txt'>
+							<h2>Lorem, ipsum.</h2>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto adipisci a voluptatem vero, tenetur, deleniti tempore velit quae
+								aut rerum nostrum ea fugiat obcaecati excepturi, temporibus provident reprehenderit placeat repudiandae. Dolores laborum sequi
+								ratione, magnam voluptas ad tempora officiis quam quia accusantium ipsam adipisci molestias, reiciendis, iure aut repudiandae
+								distinctio?
+							</p>
+							<span>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit maxime labore tempora illum necessitatibus, numquam animi ex sed dolore
+								alias obcaecati iusto est laudantium dolores harum voluptate eligendi officia! Ipsa.
+							</span>
+						</div>
+					</li>
+					<li className='s3'>
+						<div className='pic'></div>
+						<div className='txt'>
+							<h2>Lorem, ipsum.</h2>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto adipisci a voluptatem vero, tenetur, deleniti tempore velit quae
+								aut rerum nostrum ea fugiat obcaecati excepturi, temporibus provident reprehenderit placeat repudiandae. Dolores laborum sequi
+								ratione, magnam voluptas ad tempora officiis quam quia accusantium ipsam adipisci molestias, reiciendis, iure aut repudiandae
+								distinctio?
+							</p>
+							<span>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit maxime labore tempora illum necessitatibus, numquam animi ex sed dolore
+								alias obcaecati iusto est laudantium dolores harum voluptate eligendi officia! Ipsa.
+							</span>
+						</div>
+					</li>
 				</ul>
 
-				<button className='prev' onClick={prevSlide}>
-					prev
-				</button>
-				<button className='next' onClick={nextSlide}>
-					next
-				</button>
+				<div className='btnSet'>
+					<button className='prev' onClick={prevSlide}>
+						<FontAwesomeIcon icon={faCircleLeft} />
+					</button>
+					<button className='next' onClick={nextSlide}>
+						<FontAwesomeIcon icon={faCircleRight} />
+					</button>
+				</div>
 			</div>
 			{Member.map((data, idx) => {
 				return (
@@ -77,8 +127,10 @@ function Department() {
 							<div className='pic'>
 								<img src={`${path}/img/${data.pic}`} alt={data.name} />
 							</div>
-							<h3>{data.name}</h3>
-							<p>{data.position}</p>
+							<div className='txt'>
+								<h3>{data.name}</h3>
+								<p>{data.position}</p>
+							</div>
 						</div>
 					</article>
 				);

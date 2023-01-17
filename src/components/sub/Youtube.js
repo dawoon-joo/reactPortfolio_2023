@@ -5,9 +5,11 @@ import Modal from '../common/Modal';
 
 function Youtube() {
 	const modal = useRef(null);
+	const play = useRef(null);
 	const [Index, setIndex] = useState(0);
 
 	const Vids = useSelector((store) => store.youtube.data);
+
 	return (
 		<>
 			<Layout name={'Youtube'}>
@@ -24,14 +26,16 @@ function Youtube() {
 								<span>{date.split('T')[0]}</span>
 							</div>
 
-							<div
-								className='pic'
-								onClick={() => {
-									setIndex(idx);
-									modal.current.open();
-								}}
-							>
-								<img src={data.snippet.thumbnails.high.url} alt={data.snippet.title} />
+							<div className='pic' ref={play}>
+								<div className='boxs'>
+									<img src={data.snippet.thumbnails.high.url} alt={data.snippet.title} />
+									<button
+										onClick={() => {
+											setIndex(idx);
+											modal.current.open();
+										}}
+									></button>
+								</div>
 							</div>
 						</article>
 					);

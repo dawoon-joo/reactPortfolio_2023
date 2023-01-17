@@ -90,8 +90,12 @@ function Gallery() {
 										>
 											<img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_m.jpg`} alt={item.title} />
 										</div>
-										<h2>{item.title}</h2>
+										{/* <h2>{item.title}</h2> */}
 										<div className='profile'>
+											<p>
+												{'0' + (idx + 1)}
+												<span>/50</span>
+											</p>
 											<img
 												src={`http://farm${item.farm}.staticflickr.com/${item.server}/buddyicons/${item.owner}.jpg`}
 												alt={item.owner}

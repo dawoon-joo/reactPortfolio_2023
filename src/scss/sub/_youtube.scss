@@ -1,65 +1,68 @@
 .Youtube {
 	background: #000;
-	article {
-		border-top: 1px solid #ddd;
-		padding: 20px 0px;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-
-		h3 {
-			width: 25%;
-			font-weight: bold;
-			font-size: 28px;
-			font-family: 'work sans';
-			color: #fff;
-		}
-		.txt {
-			width: 38%;
+	.inner {
+		padding-bottom: 50px;
+		article {
+			border-top: 1px solid #ddd;
+			padding: 20px 0px;
 			display: flex;
 			flex-wrap: wrap;
-			align-content: space-between;
-			p {
-				font: 14px/1.2 'arial';
+			justify-content: space-between;
+
+			h3 {
+				width: 25%;
+				font-weight: bold;
+				font-size: 28px;
+				font-family: 'work sans';
 				color: #fff;
 			}
-			span {
-				font: 12px/1 'arial';
-				color: $titleColor;
-			}
-		}
-		.pic {
-			width: 35%;
-			height: 200px;
-			position: relative;
-			overflow: hidden;
-
-			.boxs {
-				width: 100%;
-				height: 100%;
-				transform: scale(1);
-				transition: 0.5s;
-
-				&:hover {
-					transform: scale(1.1);
+			.txt {
+				width: 38%;
+				display: flex;
+				flex-wrap: wrap;
+				align-content: space-between;
+				p {
+					font: 14px/1.2 'arial';
+					color: #fff;
 				}
-				img {
+				span {
+					font: 12px/1 'arial';
+					color: $titleColor;
+				}
+			}
+			.pic {
+				width: 35%;
+				height: 200px;
+				position: relative;
+				overflow: hidden;
+
+				.boxs {
 					width: 100%;
 					height: 100%;
-					object-fit: cover;
 					transform: scale(1);
-				}
-				button {
-					width: 50px;
-					height: 50px;
-					background: url(../../../public/img/play.png) no-repeat center/cover;
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-					border: none;
-					cursor: pointer;
-					transition: 0.5;
+					transition: 0.5s;
+
+					&:hover {
+						transform: scale(1.1);
+					}
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						transform: scale(1);
+					}
+					button {
+						width: 50px;
+						height: 50px;
+						background: url(../../../public/img/play.png) no-repeat center/cover;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						border: none;
+						cursor: pointer;
+						transition: 0.5;
+					}
 				}
 			}
 		}
@@ -68,17 +71,19 @@
 
 @media screen and (max-width: $tablet) {
 	.Youtube {
-		article {
-			h3 {
-				width: 48%;
-			}
-			.txt {
-				width: 50%;
-			}
-			.pic {
-				width: 100%;
-				margin-top: 50px;
-				margin-bottom: 80px;
+		.inner {
+			article {
+				h3 {
+					width: 48%;
+				}
+				.txt {
+					width: 50%;
+				}
+				.pic {
+					width: 100%;
+					margin-top: 50px;
+					margin-bottom: 80px;
+				}
 			}
 		}
 	}
@@ -86,21 +91,23 @@
 
 @media screen and (max-width: $mobile) {
 	.Youtube {
-		article {
-			h3 {
-				width: 100%;
-				margin-bottom: 20px;
-			}
-			.txt {
-				width: 100%;
-				span {
-					margin-top: 20px;
+		.inner {
+			article {
+				h3 {
+					width: 100%;
+					margin-bottom: 20px;
 				}
-			}
-			.pic {
-				width: 100%;
-				margin-top: 30px;
-				margin-bottom: 40px;
+				.txt {
+					width: 100%;
+					span {
+						margin-top: 20px;
+					}
+				}
+				.pic {
+					width: 100%;
+					margin-top: 30px;
+					margin-bottom: 40px;
+				}
 			}
 		}
 	}

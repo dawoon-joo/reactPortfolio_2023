@@ -1,5 +1,7 @@
 import Layout from '../common/Layout';
 import { useRef, useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function Community() {
 	const getLocalData = () => {
@@ -80,14 +82,27 @@ function Community() {
 	}, [Posts]);
 	return (
 		<Layout name={'Community'}>
-			<div className='inputBox'>
-				<input type='text' placeholder='제목을 입력하세요' ref={input} />
-				<br />
-				<textarea cols='30' rows='4' placeholder='본문을 입력하세요' ref={textarea}></textarea>
-				<br />
-				<div className='btnSet'>
-					<button onClick={resetForm}>CANCEL</button>
-					<button onClick={createPost}>WRITE</button>
+			<div className='boxWrap'>
+				<div className='inputBox'>
+					<input type='text' placeholder='제목을 입력하세요' ref={input} />
+					<br />
+					<textarea cols='30' rows='4' placeholder='본문을 입력하세요' ref={textarea}></textarea>
+					<br />
+					<div className='btnSet'>
+						<button onClick={resetForm}>CANCEL</button>
+						<button onClick={createPost}>WRITE</button>
+					</div>
+				</div>
+				<div className='txtBox'>
+					<h2>
+						<FontAwesomeIcon icon={faArrowLeft} />
+						SWITCH TO
+						<br />
+						STUDIO
+					</h2>
+					<h3>
+						PROJECT FILE <br /> REPOSITORY
+					</h3>
 				</div>
 			</div>
 
@@ -116,9 +131,9 @@ function Community() {
 								//출력 모드
 								<>
 									<div className='txt'>
+										<span ref={span}>{'0' + (idx + 1)}</span>
 										<h2>{post.title}</h2>
 										<p>{post.content}</p>
-										<p ref={span}>{'0' + (idx + 1)}</p>
 									</div>
 
 									<div className='btnSet'>

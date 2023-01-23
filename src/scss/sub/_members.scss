@@ -1,77 +1,213 @@
 .Members {
 	background: #000;
 	> .inner {
-		table {
-			width: 100%;
-			border: none;
-			border-top: 2px solid #333;
-			border-bottom: 1px solid #333;
+		padding-bottom: 50px;
+		.boxWrap {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 50px;
+			form {
+				width: 60%;
+				padding-right: 30px;
+				border-right: 1px solid #fff;
+				table {
+					width: 100%;
+					border: none;
+					color: #fff;
 
-			th {
-				width: 20%;
-				border: none;
-				border-bottom: 1px solid #bbb;
-				padding: 15px 30px;
-				text-align: left;
+					th {
+						width: 20%;
+						border: none;
+						border-bottom: 1px solid #bbb;
+						padding: 15px 30px;
+						text-align: left;
 
-				&:last-child {
-					text-align: center;
-					input[type='reset'],
-					input[type='submit'] {
-						border: 1px solid #aaa;
-						width: 150px;
-						height: 30px;
-						display: line-flex;
-						justify-content: center;
-						align-items: center;
-						margin: 0px 10px;
-						cursor: pointer;
+						&:last-child {
+							text-align: center;
+							input[type='reset'],
+							input[type='submit'] {
+								border: 1px solid #aaa;
+								width: 150px;
+								height: 30px;
+								display: line-flex;
+								justify-content: center;
+								align-items: center;
+								margin: 0px 10px;
+								cursor: pointer;
+							}
+						}
+					}
+
+					td {
+						border: none;
+						border-bottom: 1px solid #bbb;
+						border-left: 1px solid #bbb;
+						padding: 15px 30px;
+
+						input[type='text'],
+						input[type='password'] {
+							width: 80%;
+							border: 1px solid #aaa;
+							padding: 6px 10px;
+						}
+						input[type='password'],
+						textarea {
+							width: 80%;
+							border: 1px solid #aaa;
+							padding: 6px 10px;
+						}
+						span.err {
+							font: 11px/1 '돋움';
+							color: hotpink;
+							margin-left: 20px;
+						}
 					}
 				}
 			}
+			.txtBox {
+				width: 45%;
+				color: #fff;
+				padding: 10px 30px;
 
-			td {
-				border: none;
-				border-bottom: 1px solid #bbb;
-				border-left: 1px solid #bbb;
-				padding: 15px 30px;
+				h2 {
+					font: 30px/1 'arial';
+					text-align: center;
+					margin-bottom: 50px;
+					position: relative;
 
-				input[type='text'],
-				input[type='password'] {
-					width: 40%;
-					border: 1px solid #aaa;
-					padding: 6px 10px;
+					&::after {
+						content: '';
+						display: block;
+						position: absolute;
+						bottom: -20px;
+						left: 50%;
+						transform: translateX(-50%);
+						width: 270px;
+						height: 5px;
+						background: #fff;
+					}
 				}
-				input[type='password'],
-				textarea {
-					width: 40%;
-					border: 1px solid #aaa;
-					padding: 6px 10px;
+				p {
+					font: 20px/1.3 'arial';
+					color: #999;
+					margin-bottom: 30px;
 				}
-				span.err {
-					font: 11px/1 '돋움';
-					color: hotpink;
-					margin-left: 20px;
+
+				span {
+					font: 16px/1 'arial';
+					color: #eee;
+					display: block;
+					margin-bottom: 20px;
+				}
+			}
+		}
+
+		.txtWrap {
+			padding: 20px 0;
+			width: 100%;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			gap: 20px;
+			border-top: 5px solid #fff;
+
+			article {
+				width: calc(30% - 20px);
+				border-right: 1px solid #fff;
+
+				&:nth-of-type(2) {
+					width: calc(35% - 20px);
+				}
+				&:nth-of-type(3) {
+					width: calc(35% - 20px);
+				}
+				&:last-child {
+					border: none;
+				}
+
+				h2 {
+					margin-bottom: 20px;
+				}
+				h3 {
+					font: 18px/1 'arial';
+					color: #ccc;
+					margin-bottom: 10px;
+				}
+				p {
+					font: 16px/1.3 'arial';
+					color: #999;
+					margin-bottom: 10px;
+				}
+				svg {
+					margin-right: 10px;
+					font-size: 24px;
+					margin-top: 10px;
 				}
 			}
 		}
 	}
 }
 
-@media screen and (max-width: $tablet) {
+@media screen and (max-width: '900px') {
 	.Members {
 		> .inner {
-			table {
-				td {
-					input[type='text'],
-					input[type='password'],
-					select,
-					textarea {
-						width: 80%;
+			width: 100%;
+			.boxWrap {
+				flex-wrap: wrap;
+				form {
+					width: 100%;
+					padding-right: 0px;
+					border: none;
+					margin-bottom: 20px;
+				}
+				.txtBox {
+					width: 100%;
+					color: #fff;
+					padding: 10px 30px;
+					text-align: center;
+
+					h2 {
+						font: 30px/1 'arial';
 					}
-					.err {
-						display: block;
-						margin-top: 10px;
+					p {
+						font: 20px/1.3 'arial';
+					}
+
+					span {
+						font: 16px/1 'arial';
+					}
+				}
+			}
+
+			.txtWrap {
+				gap: 20px;
+				flex-wrap: wrap;
+				text-align: center;
+
+				article {
+					width: calc(100%);
+					border: none;
+					padding-bottom: 20px;
+					border-bottom: 1px solid #bbb;
+
+					&:nth-of-type(2) {
+						width: calc(100%);
+					}
+					&:nth-of-type(3) {
+						width: calc(100%);
+					}
+					&:last-child {
+						border-bottom: 1px solid #bbb;
+					}
+
+					h3 {
+						font: 18px/1 'arial';
+					}
+					p {
+						font: 16px/1.3 'arial';
+					}
+					svg {
+						font-size: 24px;
 					}
 				}
 			}
@@ -82,28 +218,64 @@
 @media screen and (max-width: $mobile) {
 	.Members {
 		> .inner {
-			table {
-				th {
-					display: none;
-					padding: 15px 0px;
-					&:last-child {
-						display: block;
-						width: 100%;
-					}
-					input[type='reset'],
-					input[type='submit'] {
-						width: 48% !important;
-						margin: 0 !important;
+			padding: 0 20px 50px;
+			.boxWrap {
+				form {
+					tbody {
+						th {
+							width: 10%;
+							font-size: 12px;
+							padding: 15px 10px;
+
+							&:last-child {
+								input[type='reset'],
+								input[type='submit'] {
+									width: 120px;
+								}
+							}
+						}
+						td {
+							padding: 15px 10px;
+							input[type='text'],
+							input[type='password'] {
+								width: 100%;
+							}
+							input[type='password'],
+							textarea {
+								width: 100%;
+							}
+						}
 					}
 				}
-				td {
-					border-left: none;
-					padding: 15px 0;
-					input[type='text'],
-					input[type='password'],
-					select,
-					textarea {
-						width: 100%;
+				.txtBox {
+					padding: 10px 0px;
+
+					h2 {
+						font: 20px/1 'arial';
+					}
+					p {
+						font: 14px/1.3 'arial';
+					}
+
+					span {
+						font: 12px/1 'arial';
+					}
+				}
+			}
+
+			.txtWrap {
+				article {
+					h2 {
+						font: 20px/1 'arial';
+					}
+					h3 {
+						font: 14px/1 'arial';
+					}
+					p {
+						font: 12px/1.3 'arial';
+					}
+					svg {
+						font-size: 24px;
 					}
 				}
 			}

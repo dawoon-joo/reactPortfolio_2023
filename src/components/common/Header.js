@@ -2,7 +2,14 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
+import { toggle } from '../../redux/menuSlice';
+import { useSelector, useDispatch } from 'react-redux';
+
 function Header(props) {
+	const dispatch = useDispatch();
+	const menu = useSelector((store) => store.menu.open);
+	console.log(menu);
+
 	const active = { color: '#4e6298' };
 	return (
 		<>
@@ -56,7 +63,13 @@ function Header(props) {
 							</li>
 						</ul>
 					</div>
-					<FontAwesomeIcon icon={faBars} onClick={() => props.menuOpen.current.toggle()} />
+					<FontAwesomeIcon
+						icon={faBars}
+						className={menu ? 'on' : ''}
+						onClick={() => {
+							dispatch(toggle());
+						}}
+					/>
 				</div>
 			</header>
 		</>

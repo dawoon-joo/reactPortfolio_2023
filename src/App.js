@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
-import { useRef } from 'react';
+
 //common
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
@@ -25,7 +25,6 @@ import { useEffect } from 'react';
 
 function App() {
 	const dispatch = useDispatch();
-	const menuOpen = useRef(null);
 
 	useEffect(() => {
 		dispatch(fetchYoutube());
@@ -34,8 +33,8 @@ function App() {
 	return (
 		<>
 			<Switch>
-				<Route exact path='/' render={() => <Main menuOpen={menuOpen} />} />
-				<Route path='/' render={() => <Header type={'sub'} menuOpen={menuOpen} />} />
+				<Route exact path='/' render={() => <Main />} />
+				<Route path='/' render={() => <Header type={'sub'} />} />
 			</Switch>
 
 			<Route path='/department' component={Department} />
@@ -45,7 +44,7 @@ function App() {
 			<Route path='/location' component={Location} />
 			<Route path='/members' component={Members} />
 			<Footer />
-			<Menu ref={menuOpen} />
+			<Menu />
 		</>
 	);
 }

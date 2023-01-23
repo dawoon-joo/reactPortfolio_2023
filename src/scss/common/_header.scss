@@ -117,6 +117,10 @@ header {
 			display: none;
 			cursor: pointer;
 			color: #999;
+
+			&.on {
+				color: $titleColor !important;
+			}
 		}
 	}
 

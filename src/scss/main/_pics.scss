@@ -14,7 +14,10 @@
 				left: 0;
 			}
 			.flickrWrap {
-				transform: translateX(0%);
+				article {
+					transform: translateY(0) rotateY(0);
+					opacity: 1;
+				}
 			}
 		}
 	}
@@ -61,13 +64,14 @@
 			display: flex;
 			justify-content: space-between;
 			flex-wrap: wrap;
-			transform: translateX(120%);
-			transition: 1s 1s;
 
 			article {
 				width: calc(100% / 3 - 20px);
 				height: 300px;
 				margin-bottom: 20px;
+				transform: translateY(100px) rotateY(90deg);
+				opacity: 0;
+				transition: 1s 1s;
 				&:first-of-type {
 					margin-left: calc(100% / 3 + 10px);
 				}

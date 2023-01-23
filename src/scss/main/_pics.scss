@@ -4,6 +4,20 @@
 	background: #fff;
 	position: relative;
 	overflow: hidden;
+
+	&.on {
+		.inner {
+			> h1 {
+				transform: translateX(0%);
+			}
+			.txtBox {
+				left: 0;
+			}
+			.flickrWrap {
+				transform: translateX(0%);
+			}
+		}
+	}
 	.inner {
 		width: 1180px;
 		height: 100%;
@@ -18,16 +32,19 @@
 			letter-spacing: 1.3px;
 			margin-top: 0;
 			margin-bottom: 40px;
+			transform: translateX(-100%);
+			transition: 1s;
 		}
 
 		.txtBox {
 			width: calc(100% / 3 - 20px);
 			height: 300px;
 			position: absolute;
-			left: 0;
+			left: -100%;
 			top: 330px;
 			padding-right: 40px;
 			z-index: 1;
+			transition: 1s 0.5s;
 			p {
 				font: normal 16px/1.4 'arial';
 				color: #888;
@@ -44,6 +61,8 @@
 			display: flex;
 			justify-content: space-between;
 			flex-wrap: wrap;
+			transform: translateX(120%);
+			transition: 1s 1s;
 
 			article {
 				width: calc(100% / 3 - 20px);

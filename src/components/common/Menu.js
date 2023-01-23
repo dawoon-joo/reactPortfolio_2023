@@ -33,7 +33,7 @@ const Menu = forwardRef((props, ref) => {
 					}}
 				>
 					<h1>
-						<Link to='/'>DCODELAB</Link>
+						<Link to='/'>PORTFOLIO</Link>
 					</h1>
 
 					<ul id='gnbMo'>

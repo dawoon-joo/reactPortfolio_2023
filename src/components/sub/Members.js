@@ -138,8 +138,8 @@ function Members() {
 
 								<tr>
 									<th colSpan='2'>
-										<input type='reset' value='Cancel' onClick={handleReset} />
-										<input type='submit' value='Send' />
+										<input type='reset' defaultValue='Cancel' onClick={handleReset} />
+										<input type='submit' defaultValue='Send' />
 									</th>
 								</tr>
 							</tbody>

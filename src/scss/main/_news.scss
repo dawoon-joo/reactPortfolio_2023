@@ -1,7 +1,7 @@
 #news {
 	width: 100%;
 	height: auto;
-	background: #fff;
+	background: #000;
 	position: relative;
 	overflow: hidden;
 
@@ -27,17 +27,17 @@
 
 		> h1 {
 			font: bold 50px/1.3 'arial';
-			color: #666;
+			color: #fff;
 			letter-spacing: 1.3px;
 			margin-top: 0px;
 			margin-bottom: 40px;
 			transform: translateX(-100%);
-			transition: 1s;
+			transition: 0.5s;
 		}
 		.wrap {
 			width: 100%;
 			transform: translateX(120%);
-			transition: 1s 1s;
+			transition: 0.5s 0.5s;
 			article {
 				width: 100%;
 				padding: 30px;
@@ -54,7 +54,7 @@
 					height: 100%;
 					word-wrap: break-word;
 					font: bold 16px/1.2 'arial';
-					color: #555;
+					color: #fff;
 				}
 				p {
 					word-wrap: break-word;

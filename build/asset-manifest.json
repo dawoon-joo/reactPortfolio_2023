@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/reactweb_2023/static/css/main.e97fd2ea.css",
-    "main.js": "/reactweb_2023/static/js/main.2d458bfb.js",
-    "static/media/department_pic02.jpg": "/reactweb_2023/static/media/department_pic02.b5769d73c8ee6d130c88.jpg",
-    "static/media/department_pic01.jpg": "/reactweb_2023/static/media/department_pic01.f78c3bfd053ddf32d0d9.jpg",
-    "static/media/department_pic03.jpg": "/reactweb_2023/static/media/department_pic03.7d6b7ea267e6f989b8b7.jpg",
-    "static/media/main2.jpg": "/reactweb_2023/static/media/main2.427f28e1e7e611030a47.jpg",
-    "index.html": "/reactweb_2023/index.html",
-    "main.e97fd2ea.css.map": "/reactweb_2023/static/css/main.e97fd2ea.css.map",
-    "main.2d458bfb.js.map": "/reactweb_2023/static/js/main.2d458bfb.js.map"
+    "main.css": "/reactPortfolio_2023/static/css/main.4c9fa8d7.css",
+    "main.js": "/reactPortfolio_2023/static/js/main.5c6923b7.js",
+    "static/media/department_pic02.jpg": "/reactPortfolio_2023/static/media/department_pic02.b5769d73c8ee6d130c88.jpg",
+    "static/media/department_pic01.jpg": "/reactPortfolio_2023/static/media/department_pic01.f78c3bfd053ddf32d0d9.jpg",
+    "static/media/department_pic03.jpg": "/reactPortfolio_2023/static/media/department_pic03.7d6b7ea267e6f989b8b7.jpg",
+    "static/media/main2.jpg": "/reactPortfolio_2023/static/media/main2.427f28e1e7e611030a47.jpg",
+    "index.html": "/reactPortfolio_2023/index.html",
+    "main.4c9fa8d7.css.map": "/reactPortfolio_2023/static/css/main.4c9fa8d7.css.map",
+    "main.5c6923b7.js.map": "/reactPortfolio_2023/static/js/main.5c6923b7.js.map"
   },
   "entrypoints": [
-    "static/css/main.e97fd2ea.css",
-    "static/js/main.2d458bfb.js"
+    "static/css/main.4c9fa8d7.css",
+    "static/js/main.5c6923b7.js"
   ]
 }
